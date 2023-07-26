@@ -4,7 +4,7 @@ console.log(article);
 export const App = () => {
   return (
     <div>
-      <BlogCard article={article} />
+      <BlogCard {...article} />
     </div>
   );
 };

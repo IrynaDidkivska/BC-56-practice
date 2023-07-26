@@ -6,5 +6,9 @@
   "tag": "food",
   "title": "Delicious Food",
   "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi perferendis molestiae non nemo doloribus. Doloremque, nihil! At ea atque quidem!",
-  "avatar": "https://i.pravatar.cc/40?img=2"
+  "avatar": "https://i.pravatar.cc/40?img=2",
+  "bio": {
+    "name": "Alex",
+    "age": "24"
+  }
 }
