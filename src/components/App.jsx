@@ -1,3 +1,10 @@
+import { BlogCard } from './BlogCard';
+import article from '../assets/article.json';
+console.log(article);
 export const App = () => {
-  return <div>React homework template</div>;
+  return (
+    <div>
+      <BlogCard article={article} />
+    </div>
+  );
 };
