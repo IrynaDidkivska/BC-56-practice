@@ -1,11 +1,10 @@
-import { BlogCard } from './BlogCard';
 import article from '../assets/article.json';
 import { TodoListFn } from './TodoList';
 
 console.log(article);
 export const App = () => {
   const bookList = [
-    { id: 1, price: 5, name: 'FairTale' },
+    { id: 1, name: 'FairTale' },
     { id: 2, price: 10, name: 'Science Fiction' },
   ];
 

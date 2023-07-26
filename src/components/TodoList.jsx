@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 export const TodoListFn = ({ title, list }) => {
   return (
     <>
@@ -14,4 +15,15 @@ export const TodoListFn = ({ title, list }) => {
       </ul>
     </>
   );
+};
+
+TodoListFn.propTypes = {
+  title: PropTypes.string,
+  list: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number,
+      name: PropTypes.string,
+      price: PropTypes.number.isRequired,
+    })
+  ),
 };
