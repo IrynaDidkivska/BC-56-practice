@@ -1,6 +1,16 @@
 import React from 'react';
 import { formatDateToNow } from 'services/formatDate';
-import { Avatar, CardContainer, Date, DescriptionContainer, Flex, Picture, PictureContainer, Tag, Title } from './BlogCard.styled';
+import {
+  Avatar,
+  CardContainer,
+  Date,
+  DescriptionContainer,
+  Flex,
+  Picture,
+  PictureContainer,
+  Tag,
+  Title,
+} from './BlogCard.styled';
 
 export const BlogCard = props => {
   const { name, postedAt, poster, tag, title, description, avatar } =
@@ -17,7 +27,7 @@ export const BlogCard = props => {
         <p>{description}</p>
       </DescriptionContainer>
       <div>
-        <Flex >
+        <Flex>
           <Avatar src={avatar} alt="Avatar" />
           <div>
             <p>{name}</p>
