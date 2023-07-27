@@ -1,6 +1,10 @@
-import { BlogCard } from './BlogCard';
+import 'modern-normalize';
+import { styled } from 'styled-components';
+import { BlogCard } from './BlogCard/BlogCard';
 import article from '../assets/article.json';
 import { TodoListFn } from './TodoList';
+
+
 
 console.log(article);
 export const App = () => {
@@ -15,9 +19,18 @@ export const App = () => {
   ];
 
   return (
-    <div>
-      <TodoListFn title="Books" list={bookList} />
-      <TodoListFn title="Films" list={Films} />
-    </div>
+    <Container >
+      <BlogCard article={ article} />
+
+    </Container>
   );
 };
+
+
+const Container = styled.div`
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+`
