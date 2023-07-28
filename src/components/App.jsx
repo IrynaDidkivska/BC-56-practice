@@ -1,6 +1,8 @@
 import { Cart } from './Cart/Cart';
 import { ProductsList } from './Products/ProductsList';
 import { Profiles } from './Profiles/Profiles';
+import { Stats } from './Stats/Stats';
+
 
 export const App = () => {
   const obj = {
@@ -36,12 +38,33 @@ export const App = () => {
     }
   ]
 
+  const statistics = [{
+      id: '02x5',
+      title: 'Income',
+      count: 12000,
+      user: {
+          name: 'Roman',
+          age: 28,
+      }
+  },
+  {
+    id: '03b6',
+    title: 'Income',
+    count: 15000,
+    user: {
+        name: 'Andriy',
+        age: 36,
+    }
+},
+]
+
 
   return (
     <div>
       <Profiles data={obj} />
       <ProductsList produts={products} />
       <Cart cart={cartLisrt}/>
+      <Stats statistics={statistics} message='Hello everybody!'/>
     </div>
 
 
