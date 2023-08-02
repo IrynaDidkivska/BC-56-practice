@@ -2,6 +2,9 @@
 import React, { Component } from 'react';
 import { LoginForm } from './LoginForm/LoginForm';
 import { styled } from 'styled-components';
+import { TodoList } from './Form/TodoList';
+import { AddTodoForm } from './AddTodoForm/AddTodoForm';
+import { nanoid } from 'nanoid';
 
 export class App extends Component {
   state = {
@@ -10,6 +13,11 @@ export class App extends Component {
       password: '',
       isLoggedIn: false,
     },
+    todos: [
+      { id: 123, task: 'Call friend', isCompleted: true },
+      { id: 2, task: 'Runing', isCompleted: false },
+      { id: 3, task: 'Buy milk', isCompleted: false },
+    ],
   };
 
   handleLogin = user => {
@@ -22,7 +30,27 @@ export class App extends Component {
     }));
   };
 
+  handleToggleTodo = id => {
+    this.setState(prev => ({
+      todos: prev.todos.map(todo =>
+        todo.id === id ? { ...todo, isCompleted: !todo.isCompleted } : todo
+      ),
+    }));
+  };
+
+  hendleDeletedSelected = () => {
+    this.setState(prev => ({
+      todos: prev.todos.filter(todo => !todo.isCompleted),
+    }));
+  };
+
+  handleAddTodo = item => {
+    this.setState(prev => ({
+      todos: [...prev.todos, { task: item, id: nanoid(), isCompleted: false }],
+    }));
+  };
   render() {
+    const { todos } = this.state;
     if (!this.state.user.isLoggedIn) {
       return <LoginForm onLogin={this.handleLogin} />;
     }
@@ -36,6 +64,13 @@ export class App extends Component {
         <Button onClick={this.handleLogOut}>Logout</Button>
 
         <hr />
+        <AddTodoForm onAddTodo={this.handleAddTodo} />
+        <hr />
+        <TodoList
+          data={todos}
+          onToggle={this.handleToggleTodo}
+          onDeleteSelected={this.hendleDeletedSelected}
+        />
       </>
     );
   }
@@ -47,6 +82,7 @@ export const Text = styled.p`
 `;
 
 export const Button = styled.button`
+  display: block;
   height: auto;
   margin: 0 auto;
   padding: 10px;
