@@ -1,27 +1,18 @@
 import React from 'react';
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ReactDOM from 'react-dom/client';
 import { App } from 'components/App';
 import './index.css';
 import 'modern-normalize';
-import { createGlobalStyle, styled } from 'styled-components';
-
-const Global = createGlobalStyle`
-  body{
-    background-color: cyan;
-  }
-`;
-const Reset = createGlobalStyle`
-  body{
-    font-size: 3rem;
-  }
-`;
+import { ThemeProvider } from 'styled-components';
+import { theme } from 'styles/theme';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <App />
-
-    <ToastContainer autoClose={1500} />
+    <ThemeProvider theme={theme}>
+      <App />
+      <ToastContainer autoClose={1500} />
+    </ThemeProvider>
   </React.StrictMode>
 );

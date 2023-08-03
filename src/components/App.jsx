@@ -103,7 +103,8 @@ export class App extends Component {
           <Text>U are offline</Text>
         )}
         <Button onClick={this.handleLogOut}>Logout</Button>
-
+        <Test />
+        <Test2 />
         <hr />
         <AddTodoForm onAddTodo={this.handleAddTodo} />
         <hr />
@@ -138,4 +139,15 @@ export const Button = styled.button`
     scale: 1.1;
     background-color: #649eff;
   }
+`;
+export const Test = styled.div`
+  width: 200px;
+  height: 200px;
+  background-color: ${({ theme }) => theme.colors.mainColor};
+  margin-bottom: ${({ theme }) => theme.spacing(40)};
+`;
+export const Test2 = styled(Test)`
+  width: 200px;
+  height: 200px;
+  background-color: ${({ theme }) => theme.colors.secondColor};
 `;
