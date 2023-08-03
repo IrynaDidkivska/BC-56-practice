@@ -2,9 +2,10 @@
 import React, { Component } from 'react';
 import { LoginForm } from './LoginForm/LoginForm';
 import { styled } from 'styled-components';
-import { TodoList } from './Form/TodoList';
+import { TodoList } from './TodoList/TodoList';
 import { AddTodoForm } from './AddTodoForm/AddTodoForm';
 import { nanoid } from 'nanoid';
+import { toast } from 'react-toastify';
 
 export class App extends Component {
   state = {
@@ -18,7 +19,31 @@ export class App extends Component {
       { id: 2, task: 'Runing', isCompleted: false },
       { id: 3, task: 'Buy milk', isCompleted: false },
     ],
+    bgColor: 'white',
   };
+
+  componentDidUpdate(prevProps, prevState) {
+    if (this.state.todos.length !== prevState.todos.length) {
+      console.log('update data =>', this.state.todos);
+      window.localStorage.setItem('todos', JSON.stringify(this.state.todos));
+
+      if (this.state.todos.length > 5) {
+        this.setState({ bgColor: 'teal' });
+      }
+      if (this.state.todos.length > 7) {
+        this.setState({ bgColor: 'red' });
+      }
+      if (this.state.todos.length > 10) {
+        this.handleClear();
+      }
+    }
+  }
+  componentDidMount() {
+    const dataOfTodo = JSON.parse(localStorage.getItem('todos'));
+    if (dataOfTodo.length) {
+      this.setState({ todos: dataOfTodo });
+    }
+  }
 
   handleLogin = user => {
     this.setState({ user: { ...user, isLoggedIn: true } });
@@ -48,14 +73,30 @@ export class App extends Component {
     this.setState(prev => ({
       todos: [...prev.todos, { task: item, id: nanoid(), isCompleted: false }],
     }));
+    toast.success(`${item} was add.`);
   };
+
+  handleDelTodo = id => {
+    this.setState(prev => ({
+      todos: prev.todos.filter(item => {
+        if (item.id !== id) {
+          return item;
+        } else return null;
+      }),
+    }));
+  };
+
+  handleClear = () => {
+    this.setState({ todos: [] });
+  };
+
   render() {
     const { todos } = this.state;
     if (!this.state.user.isLoggedIn) {
       return <LoginForm onLogin={this.handleLogin} />;
     }
     return (
-      <>
+      <div style={{ backgroundColor: this.state.bgColor }}>
         {this.state.user.isLoggedIn ? (
           <Text>U are online</Text>
         ) : (
@@ -67,11 +108,13 @@ export class App extends Component {
         <AddTodoForm onAddTodo={this.handleAddTodo} />
         <hr />
         <TodoList
+          onDelete={this.handleDelTodo}
           data={todos}
           onToggle={this.handleToggleTodo}
           onDeleteSelected={this.hendleDeletedSelected}
+          onClear={this.handleClear}
         />
-      </>
+      </div>
     );
   }
 }

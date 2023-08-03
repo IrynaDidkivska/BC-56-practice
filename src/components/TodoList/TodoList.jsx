@@ -1,11 +1,18 @@
 import React from 'react';
 import { styled } from 'styled-components';
 
-export const TodoList = ({ data, onToggle, onDeleteSelected }) => {
+export const TodoList = ({
+  data,
+  onToggle,
+  onDeleteSelected,
+  onDelete,
+  onClear,
+}) => {
   return (
     <Wrapper>
       <Title> Hello Everybody!</Title>
       <Button onClick={onDeleteSelected}>Delete Selected</Button>
+      <Button onClick={onClear}>Clear</Button>
       <ol>
         {data.map(el => (
           <li key={el.id}>
@@ -15,6 +22,13 @@ export const TodoList = ({ data, onToggle, onDeleteSelected }) => {
               onChange={() => onToggle(el.id)}
             />
             {el.task}
+            <button
+              onClick={() => {
+                onDelete(el.id);
+              }}
+            >
+              Delete
+            </button>
           </li>
         ))}
       </ol>

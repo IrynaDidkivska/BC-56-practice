@@ -1,4 +1,5 @@
 import React from 'react';
+import { toast } from 'react-toastify';
 import { styled } from 'styled-components';
 
 export const AddTodoForm = ({ onAddTodo }) => {
@@ -6,8 +7,13 @@ export const AddTodoForm = ({ onAddTodo }) => {
     e.preventDefault();
     const form = e.currentTarget;
     const todo = form.elements.todo;
-    onAddTodo(todo.value);
-    form.reset();
+
+    if (todo.value) {
+      onAddTodo(todo.value);
+      form.reset();
+    } else {
+      toast.error('Fill to do!');
+    }
   };
 
   return (
