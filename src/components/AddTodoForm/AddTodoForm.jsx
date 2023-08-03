@@ -1,7 +1,7 @@
 import React from 'react';
 import { toast } from 'react-toastify';
 import { styled } from 'styled-components';
-
+import { StyledForm } from './AddTodoForm.styled';
 export const AddTodoForm = ({ onAddTodo }) => {
   const onSubmit = e => {
     e.preventDefault();
@@ -18,33 +18,15 @@ export const AddTodoForm = ({ onAddTodo }) => {
 
   return (
     <>
-      <Form onSubmit={onSubmit}>
-        <Input type="text" placeholder="enter your name" name="todo" />
-        <Button>Add todo</Button>
-      </Form>
+      <StyledForm.Form onSubmit={onSubmit}>
+        <StyledForm.Test>sfasdfasdfasd</StyledForm.Test>
+        <StyledForm.Input
+          type="text"
+          placeholder="enter your name"
+          name="todo"
+        />
+        <StyledForm.Button>Add todo</StyledForm.Button>
+      </StyledForm.Form>
     </>
   );
 };
-export const Form = styled.form`
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-`;
-export const Input = styled.input`
-  margin-right: 5px;
-`;
-
-export const Button = styled.button`
-  display: block;
-  height: auto;
-  padding: 10px;
-  cursor: pointer;
-  border-radius: 5px;
-  border: none;
-  font-weight: 600;
-  transition: all 300ms linear;
-  &:hover {
-    scale: 1.1;
-    background-color: #649eff;
-  }
-`;
