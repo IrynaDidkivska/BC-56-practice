@@ -8,7 +8,7 @@ export const SearchForm = ({ onSetSearch }) => {
   return (
     <form onSubmit={onSubmit}>
       <input type="text" name="query" />
-      <button>Search</button>
+      <button>Search!</button>
     </form>
   );
 };
