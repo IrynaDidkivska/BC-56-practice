@@ -9,3 +9,9 @@ export const fetchCountries = async () => {
   const countries = countriesNormalize(response.data);
   return countries;
 };
+export const fetchByRegion = async region => {
+  const { data } = await axios.get(`/region/${region}`);
+  const countries = countriesNormalize(data);
+
+  return countries;
+};
