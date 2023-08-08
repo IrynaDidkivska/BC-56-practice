@@ -19,7 +19,6 @@ export const App = () => {
         setCountries(data);
       } catch (error) {
         setError(error.message);
-        console.log(error.message);
       } finally {
         setTimeout(() => {
           setLoading(false);
@@ -36,7 +35,6 @@ export const App = () => {
   };
   return (
     <div>
-      {loading ? 'Loaded' : 'False'}
       {error && error}
       <FilterForm handleSetFilter={setFilter} />
       <CountryList data={getFilterUpdater()} />
