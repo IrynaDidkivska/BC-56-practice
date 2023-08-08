@@ -1,4 +1,3 @@
-import React from 'react';
 import { CountryCard } from './CountryCard/CountryCard';
 import { styled } from 'styled-components';
 
