@@ -1,18 +1,22 @@
 import { TodoList } from 'TodoList';
 import { nanoid } from 'nanoid';
 import React, { useReducer, useState } from 'react';
-import { actionTypes } from 'store/actionType';
-import { addTodo } from 'store/actions';
+import { actionTypes } from 'store/actionsType';
 import { initialState } from 'store/initialState';
-import { todoReducer } from 'store/reducer';
-
+import { reducer } from 'store/reducer';
 export const App = () => {
-  const [state, dispatch] = useReducer(todoReducer, initialState);
   const [value, setvalue] = useState('');
-  const handleAddTodo = () => {
-    dispatch(addTodo(value));
-  };
 
+  const [state, dispatch] = useReducer(reducer, initialState);
+  const handleAddButton = () => {
+    dispatch({
+      type: actionTypes.ADD_TODO,
+      payload: { id: nanoid(), title: value },
+    });
+  };
+  const handleDeleteTodo = id => {
+    dispatch({ type: actionTypes.DELETE_TODO, payload: id });
+  };
   return (
     <div>
       <input
@@ -20,8 +24,8 @@ export const App = () => {
         onChange={e => setvalue(e.target.value)}
         type="text"
       />
-      <button onClick={() => handleAddTodo('Hello')}>ADD todo</button>
-      <TodoList data={state.todos} dispatch={dispatch} />
+      <button onClick={handleAddButton}>ADD todo</button>
+      <TodoList data={state.todos} onDelete={handleDeleteTodo} />
     </div>
   );
 };

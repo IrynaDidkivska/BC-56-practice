@@ -1,17 +1,15 @@
-import { actionTypes } from './actionType';
+import { actionTypes } from './actionsType';
 
-export const todoReducer = (state, action) => {
+export const reducer = (state, action) => {
+  const { type, payload } = action;
   console.log(action);
-  switch (action.type) {
+  switch (type) {
     case actionTypes.ADD_TODO:
-      return {
-        ...state,
-        todos: [...state.todos, action.payload],
-      };
+      return { ...state, todos: [...state.todos, payload] };
     case actionTypes.DELETE_TODO:
       return {
         ...state,
-        todos: state.todos.filter(item => item.id !== action.payload),
+        todos: state.todos.filter(todo => todo.id !== payload),
       };
     default:
       return state;
