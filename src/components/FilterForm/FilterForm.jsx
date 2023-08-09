@@ -1,13 +1,15 @@
 import { SelectRegion } from 'components/Region/SelectRegion';
-import React, { useState } from 'react';
+import { MyContext } from 'context/ContextProvider';
+import React, { useContext, useState } from 'react';
 import { styled } from 'styled-components';
-
-export const FilterForm = ({ handleSetFilter, region, setRegion }) => {
+import { BsFillFilterCircleFill } from 'react-icons/bs';
+export const FilterForm = () => {
+  const { setFilter } = useContext(MyContext);
   const [value, setValue] = useState('');
 
   const onSubmit = e => {
     e.preventDefault();
-    handleSetFilter(value);
+    setFilter(value);
     setValue('');
   };
   return (
@@ -18,9 +20,11 @@ export const FilterForm = ({ handleSetFilter, region, setRegion }) => {
           value={value}
           type="text"
         ></input>
-        <button>Filter</button>
+        <button>
+          <BsFillFilterCircleFill />
+        </button>
       </form>
-      <SelectRegion region={region} setRegion={setRegion} />
+      <SelectRegion />
     </Wrapper>
   );
 };

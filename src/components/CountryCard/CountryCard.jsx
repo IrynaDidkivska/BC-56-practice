@@ -1,14 +1,36 @@
 import React from 'react';
 import { styled } from 'styled-components';
-
+import { AiFillLike } from 'react-icons/ai';
+import { FaReact } from 'react-icons/fa';
+import { SiRedux } from 'react-icons/si';
 export const CountryCard = ({ capital, flag, name, population }) => {
   return (
     <Card>
       <img src={flag} alt=""></img>
       <p>{name}</p>
+      <div style={{ color: 'black', fontSize: '5rem' }}>
+        <AiFillLike />
+        <ReactI />
+        <Redux />
+      </div>
     </Card>
   );
 };
+const ReactI = styled(FaReact)`
+  color: blue;
+  transition: all 5.5s ease-in-out;
+  &:hover {
+    color: red;
+    transform: rotate(360deg);
+  }
+`;
+const Redux = styled(SiRedux)`
+  color: darkviolet;
+  font-size: 100px;
+  &:hover {
+    color: black;
+  }
+`;
 const Card = styled.li`
   list-style: none;
   display: flex;

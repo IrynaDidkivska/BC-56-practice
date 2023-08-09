@@ -7,13 +7,13 @@ import { ThemeProvider } from 'styled-components';
 
 import { App } from 'components/App';
 import { theme } from 'styles/theme';
-import { MyContext, contextValue } from 'context/myContext';
+import { ContextProvider } from 'context/ContextProvider';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <MyContext.Provider value={contextValue}>
+  <ContextProvider>
     <ThemeProvider theme={theme}>
       <App />
       <ToastContainer autoClose={1500} />
     </ThemeProvider>
-  </MyContext.Provider>
+  </ContextProvider>
 );
