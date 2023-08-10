@@ -3,16 +3,20 @@ import { NavLink, Outlet } from 'react-router-dom';
 import { styled } from 'styled-components';
 
 export const Layout = () => {
+  const pages = [
+    { title: 'Home', src: '/' },
+    { title: 'About', src: '/about' },
+    { title: 'Users', src: '/users' },
+  ];
   return (
     <div>
       <nav>
         <ul>
-          <li>
-            <NavLink to="/">Home</NavLink>
-          </li>
-          <li>
-            <NavLink to="/about">About</NavLink>
-          </li>
+          {pages.map(page => (
+            <li key={page.title}>
+              <NavLink to={page.src}>{page.title}</NavLink>
+            </li>
+          ))}
         </ul>
       </nav>
       <OutletStyled>
@@ -23,8 +27,6 @@ export const Layout = () => {
 };
 
 const OutletStyled = styled.div`
-  border: 2px solid red;
-  margin: 20px 20px;
-  min-height: 50vh;
-  max-width: 400px;
+  box-shadow: 2px 2px 3px 1px gray;
+  min-height: 90vh;
 `;
