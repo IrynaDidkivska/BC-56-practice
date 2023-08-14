@@ -6,29 +6,32 @@ import {
   useNavigate,
   useSearchParams,
 } from 'react-router-dom';
+import { fetchUsers, fetchUsersByName } from 'services/api';
 
 export const Users = () => {
   const [users, setUsers] = useState([]);
 
-  const [query, setQuery] = useState('');
+  const [queryStr, setQuery] = useState('');
   const location = useLocation();
   console.log(location);
 
   const [searchParams, setSearchParams] = useSearchParams();
-
+  const query = searchParams.get('query');
   useEffect(() => {
-    axios
-      .get('https://dummyjson.com/users')
-      .then(res => setUsers(res.data.users));
-  }, []);
+    if (query) {
+      fetchUsersByName(query).then(res => setUsers(res.users));
+    } else {
+      fetchUsers().then(res => setUsers(res.users));
+    }
+  }, [query]);
 
   const handleSearch = () => {
-    setSearchParams(query ? { query } : {});
+    setSearchParams(queryStr ? { query: queryStr } : {});
   };
 
   return (
     <div>
-      <input value={query} onChange={e => setQuery(e.target.value)} />
+      <input value={queryStr} onChange={e => setQuery(e.target.value)} />
       <button onClick={handleSearch}>Search</button>
 
       {users.map(user => (
