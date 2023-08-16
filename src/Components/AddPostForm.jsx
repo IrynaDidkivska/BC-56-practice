@@ -15,10 +15,10 @@ export const AddPostForm = () => {
 
   const handleSubmit = event => {
     event.preventDefault();
-    if (!user) {
-      toast.error('Please login for add posts!');
-      return;
-    }
+    // if (!user) {
+    //   toast.error('Please login for add posts!');
+    //   return;
+    // }
     const newPostData = { title, body: newPost, id: nanoid(), author: user };
     dispatch(addPost(newPostData));
   };
