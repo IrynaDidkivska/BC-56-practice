@@ -2,6 +2,7 @@ import { nanoid } from 'nanoid';
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
+import { addPostsThunk } from 'redux/operations';
 import { addPost } from 'redux/postSlice';
 import { selectUser } from 'redux/selectors';
 
@@ -15,12 +16,8 @@ export const AddPostForm = () => {
 
   const handleSubmit = event => {
     event.preventDefault();
-    // if (!user) {
-    //   toast.error('Please login for add posts!');
-    //   return;
-    // }
-    const newPostData = { title, body: newPost, id: nanoid(), author: user };
-    dispatch(addPost(newPostData));
+    const newPostData = { title, body: newPost, author: user };
+    dispatch(addPostsThunk(newPostData));
   };
 
   return (
