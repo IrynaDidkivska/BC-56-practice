@@ -18,6 +18,7 @@ const persistConfigPosts = {
   key: 'posts',
   version: 1,
   storage,
+  blacklist: ['filter'],
 };
 
 const persistedReducerPosts = persistReducer(persistConfigPosts, postReducer);
