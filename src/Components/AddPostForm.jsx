@@ -1,9 +1,7 @@
-import { nanoid } from 'nanoid';
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
 import { addPostsThunk } from 'redux/operations';
-import { addPost } from 'redux/postSlice';
 import { selectUser } from 'redux/selectors';
 import { styled } from 'styled-components';
 
@@ -14,11 +12,13 @@ export const AddPostForm = () => {
 
   const [newPost, setNewPost] = useState('');
   const [title, setTitle] = useState('');
+  const navigate = useNavigate();
 
   const handleSubmit = event => {
     event.preventDefault();
     const newPostData = { title, body: newPost, author: user };
     dispatch(addPostsThunk(newPostData));
+    navigate('/');
   };
 
   return (
