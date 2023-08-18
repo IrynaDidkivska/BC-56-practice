@@ -9,8 +9,11 @@ const likedPostsSlice = createSlice({
     addLikedPost: (state, { payload }) => {
       state.likedPosts.push(payload);
     },
+    deleteLikedPost: (state, { payload }) => {
+      state.likedPosts = state.likedPosts.filter(item => item.id !== payload);
+    },
   },
 });
 
-export const { addLikedPost } = likedPostsSlice.actions;
+export const { addLikedPost, deleteLikedPost } = likedPostsSlice.actions;
 export const likedReducer = likedPostsSlice.reducer;

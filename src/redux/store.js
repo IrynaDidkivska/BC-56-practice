@@ -14,6 +14,7 @@ import {
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import { likedReducer } from './likedPostsSlice';
+
 const persistConfigPosts = {
   key: 'posts',
   version: 1,
@@ -21,13 +22,20 @@ const persistConfigPosts = {
   blacklist: ['filter'],
 };
 
+const persistLikedPosts = {
+  key: 'liked',
+  version: 1,
+  storage,
+};
+
 const persistedReducerPosts = persistReducer(persistConfigPosts, postReducer);
+const persistedLikedPosts = persistReducer(persistLikedPosts, likedReducer);
 
 export const store = configureStore({
   reducer: {
     posts: persistedReducerPosts,
     user: userReducer,
-    likedPosts: likedReducer,
+    likedPosts: persistedLikedPosts,
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({

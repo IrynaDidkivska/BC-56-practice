@@ -5,6 +5,7 @@ import { toast } from 'react-toastify';
 import { addPostsThunk } from 'redux/operations';
 import { addPost } from 'redux/postSlice';
 import { selectUser } from 'redux/selectors';
+import { styled } from 'styled-components';
 
 export const AddPostForm = () => {
   const dispatch = useDispatch();
@@ -21,14 +22,42 @@ export const AddPostForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <Form onSubmit={handleSubmit}>
       <input type="text" onChange={event => setTitle(event.target.value)} />
       <textarea
         onChange={event => setNewPost(event.target.value)}
         rows={4}
         cols={40}
       ></textarea>
-      <button>Add post</button>
-    </form>
+      <Button>Add post</Button>
+    </Form>
   );
 };
+
+export const Button = styled.button`
+  box-shadow: 0px 0px 4px 1px black;
+  background-color: white;
+  border: none;
+  border-radius: 3px;
+  padding: 8px 12px;
+  transition: all 0.3s ease;
+  border: none;
+  &:hover {
+    background-color: blue;
+    color: white;
+    cursor: pointer;
+  }
+`;
+
+export const Flex = styled.div`
+  display: flex;
+  margin: 20px 0;
+  gap: 20px;
+`;
+export const Form = styled.form`
+  display: flex;
+  flex-direction: column;
+  margin: 20px 0;
+  gap: 20px;
+  width: 400px;
+`;

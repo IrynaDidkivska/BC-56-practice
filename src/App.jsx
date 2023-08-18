@@ -6,6 +6,12 @@ import { NotFound } from 'pages/NotFound';
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 
+// Зробити лічильник улюблених над посиланням
+// Зробити логін окремо
+// Винести форму додавання на окремий роут
+// Організувати видалення з улюблених
+// Додати можливість вибрати категорію поста через селект
+
 export const App = () => {
   return (
     <Routes>

@@ -1,11 +1,12 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { Flex } from './AddPostForm';
 
 export const Navbar = () => {
   return (
-    <div>
+    <Flex>
       <NavLink to="/">Home</NavLink>
       <NavLink to="/liked">Liked</NavLink>
-    </div>
+    </Flex>
   );
 };
