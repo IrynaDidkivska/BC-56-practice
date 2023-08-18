@@ -1,9 +1,6 @@
-import { nanoid } from '@reduxjs/toolkit';
-import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addPost, deletePost } from 'redux/postSlice';
 import { PostFilter } from './PostFilter';
-import { selectFilter, selectPosts, selectPostsMemo } from 'redux/selectors';
+import { selectFilter, selectPostsMemo } from 'redux/selectors';
 import { addLikedPost } from 'redux/likedPostsSlice';
 import { ListStyled } from 'pages/FavouritePosts';
 import { styled } from 'styled-components';
@@ -13,7 +10,6 @@ import { Button, Flex } from './AddPostForm';
 export const PostList = () => {
   const posts = useSelector(selectPostsMemo);
   const filter = useSelector(selectFilter);
-
   const dispatch = useDispatch();
 
   const handleDelete = id => {

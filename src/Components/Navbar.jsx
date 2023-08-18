@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { Button, Flex } from './AddPostForm';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectLikedPostsCount, selectLikedPostsCount2 } from 'redux/selectors';
+import { selectLikedPostsCount } from 'redux/selectors';
 import { styled } from 'styled-components';
 import { logOut } from 'redux/userSlice';
 

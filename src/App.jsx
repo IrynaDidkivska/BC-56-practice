@@ -5,9 +5,9 @@ import { LoginForm } from 'pages/LoginForm';
 import { NotFound } from 'pages/NotFound';
 import CreatePost from 'pages/CreatePost';
 import React from 'react';
-import { Navigate, Route, Routes } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { selectLogin } from 'redux/selectors';
+import { Navigate, Route, Routes } from 'react-router-dom';
 
 // Зробити лічильник улюблених над посиланням - Oleh
 // Зробити логін окремо - Ira
