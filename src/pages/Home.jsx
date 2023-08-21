@@ -19,14 +19,12 @@ export const Home = () => {
   };
   return (
     <>
-      <div>
-        <button onClick={() => dispatch(regThunk(credentials))}>
-          Register
-        </button>
-      </div>
-      <div>
-        <button onClick={handleLogin}>Login</button>
-      </div>
+      <input type="text" />
+      <button>Add</button>
+
+      <ul>
+        <li>hello</li>
+      </ul>
     </>
   );
 };

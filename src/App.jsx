@@ -1,10 +1,7 @@
-// 1. Створити редакс папку, слайс, стор - Оля
-// 2. Доєднати редакс до проекта - Оля
-// 2.1 Логін санк, кнопка логін - Ігор
-// 3. Зробити санки - Олексій
-// 4. Зробити обробку санок - Олексій
-// 5. Навігація
-// 6. Дві сторінки
+//1. Створити публічний та приватний роут
+//2. Додати можливість рефрешу
+//3. Зробити заглушку
+//4. Редірект
 
 import { Layout } from 'Components/Layout';
 import { Home } from 'pages/Home';
@@ -19,9 +16,9 @@ export const App = () => {
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route index element={<Home />} />
-        <Route path="login" element={<LoginForm />} />
-        <Route path="register" element={<Register />} />
       </Route>
+      <Route path="/login" element={<LoginForm />} />
+      <Route path="/register" element={<Register />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
   );
