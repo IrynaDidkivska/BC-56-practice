@@ -8,6 +8,8 @@ export const Navbar = () => {
   return (
     <div>
       <NavLink to="/">Home</NavLink>
+      <NavLink to="/login">Login</NavLink>
+      <NavLink to="/register">Register</NavLink>
 
       <button onClick={handleLogout}>Logout</button>
     </div>

@@ -1,19 +1,21 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { loginThunk } from 'redux/operations';
+import { loginThunk, regThunk } from 'redux/operations';
 
-export const LoginForm = () => {
+export const Register = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [name, setName] = useState('');
   const dispatch = useDispatch();
 
   const handleSubmit = e => {
     e.preventDefault();
 
-    dispatch(loginThunk({ email, password }));
+    dispatch(regThunk({ name, email, password }));
   };
   return (
     <form onSubmit={handleSubmit}>
+      <input type="text" onChange={({ target: { value } }) => setName(value)} />
       <input
         type="email"
         onChange={({ target: { value } }) => setEmail(value)}
