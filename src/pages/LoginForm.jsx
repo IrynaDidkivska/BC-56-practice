@@ -1,19 +1,25 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link, Navigate, useLocation } from 'react-router-dom';
 import { loginThunk } from 'redux/operations';
 import { styled } from 'styled-components';
 import { motion } from 'framer-motion';
+import { selectIsLogin } from 'redux/selectors';
 export const LoginForm = () => {
+  const isLogin = useSelector(selectIsLogin);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const dispatch = useDispatch();
-
+  const location = useLocation();
+  console.log(location.state?.FromPage);
   const handleSubmit = e => {
     e.preventDefault();
 
     dispatch(loginThunk({ email, password }));
   };
+  if (isLogin) {
+    return <Navigate to={location.state?.FromPage || '/'} />;
+  }
   return (
     <>
       <Form onSubmit={handleSubmit}>

@@ -1,13 +1,19 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
+import { logoutThunk } from 'redux/operations';
 import { styled } from 'styled-components';
 
 export const Navbar = () => {
-  const handleLogout = () => {};
+  const dispatch = useDispatch();
+  const handleLogout = () => {
+    dispatch(logoutThunk());
+  };
 
   return (
     <Nav>
       <NavLink to="/">Home</NavLink>
+      <NavLink to="/todo">Todo</NavLink>
       <NavLink to="/login">Login</NavLink>
       <NavLink to="/register">Register</NavLink>
 
